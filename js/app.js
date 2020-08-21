@@ -1,5 +1,6 @@
 const phrase = document.getElementById('phrase');
 const qwerty = document.getElementById('qwerty');
+
 let missed = 0;
 
 const ul = phrase.querySelector('ul');
@@ -24,7 +25,7 @@ const phrases = [
 
 const startButton = document.querySelector('.btn__reset');
 const startScreen = document.getElementById('overlay');
-
+let h1 = startScreen.querySelector('h1');
 const title = document.querySelector('.title');
 
 // Choose random phrase
@@ -89,7 +90,6 @@ function checkLetter(clicked, array) {
     if (clicked.textContent === array[i].textContent.toLowerCase()) {
       letter = array[i].textContent.toLowerCase();
       array[i].classList.add("show");
-      // array[i].style.transition = "all 3s ease";
     }
     clicked.classList.add("chosen");
     clicked.setAttribute("disabled", true);
@@ -128,22 +128,25 @@ function checkWin() {
   let letters = document.getElementsByClassName('letter');
   startButton.textContent = "New Game";
   if (show.length === letters.length) {
-    clearGame();
-    startScreen.className = 'win';
-    startScreen.style.display = "flex";
+    h1.innerHTML = '';
     title.textContent = "Victory is yours! Two out of three?";
+    startScreen.className = 'win';
+    setTimeout(() => {
+      startScreen.style.display = "flex";
+      clearGame();
+  }, 2500);
+
   } else if (missed > 4) {
     let fullPhrase = [];
     const phraseChars = document.querySelectorAll('#phrase ul li');
     phraseChars.forEach(char => fullPhrase.push(char.textContent));
-    let h1 = startScreen.querySelector('h1');
-    h1.innerHTML = `The phrase was: ${fullPhrase.join('')}`; 
+    h1.innerHTML = `The song was: ${fullPhrase.join('')}`; 
     clearGame();
     startScreen.className = 'lose';
     startScreen.style.display = "flex";
     title.textContent = "Bummer! How 'bout another round?";
-  };
-
+  }
+}
 // Start play
 startButton.addEventListener('click', (e) => {
   addPhraseToDisplay(phrases);
