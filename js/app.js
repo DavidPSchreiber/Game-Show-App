@@ -89,7 +89,6 @@ function checkLetter(clicked, array) {
     if (clicked.textContent === array[i].textContent.toLowerCase()) {
       letter = array[i].textContent.toLowerCase();
       array[i].classList.add("show");
-      // array[i].style.transition = "all 3s ease";
     }
     clicked.classList.add("chosen");
     clicked.setAttribute("disabled", true);
