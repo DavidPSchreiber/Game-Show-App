@@ -89,6 +89,7 @@ function checkLetter(clicked, array) {
     if (clicked.textContent === array[i].textContent.toLowerCase()) {
       letter = array[i].textContent.toLowerCase();
       array[i].classList.add("show");
+      // array[i].style.transition = "all 3s ease";
     }
     clicked.classList.add("chosen");
     clicked.setAttribute("disabled", true);
@@ -126,35 +127,23 @@ function checkWin() {
   let show = document.getElementsByClassName('show');
   let letters = document.getElementsByClassName('letter');
   startButton.textContent = "New Game";
-  // wait for animation to finish
-
-    if (show.length === letters.length) {
-
-      // Wait for the animation to complete
-     
-      setTimeout(function(){
-      // Display win overlay
-      overlay.style.display = 'flex';
-      overlay.classList.add('win');
-      overlay.appendChild(win);
-      title.textContent = "Victory is yours! Two out of three?";
-    }, 2000);
-      clearGame();
-      //  startScreen.className = 'win';
-      //  startScreen.style.display = "flex";
-   
+  if (show.length === letters.length) {
+    clearGame();
+    startScreen.className = 'win';
+    startScreen.style.display = "flex";
+    title.textContent = "Victory is yours! Two out of three?";
   } else if (missed > 4) {
     let fullPhrase = [];
     const phraseChars = document.querySelectorAll('#phrase ul li');
     phraseChars.forEach(char => fullPhrase.push(char.textContent));
     let h1 = startScreen.querySelector('h1');
-    h1.innerHTML = `The song was: ${fullPhrase.join('')}`; 
+    h1.innerHTML = `The phrase was: ${fullPhrase.join('')}`; 
     clearGame();
     startScreen.className = 'lose';
     startScreen.style.display = "flex";
     title.textContent = "Bummer! How 'bout another round?";
-  }
-}
+  };
+
 // Start play
 startButton.addEventListener('click', (e) => {
   addPhraseToDisplay(phrases);
