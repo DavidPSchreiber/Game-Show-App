@@ -137,13 +137,13 @@ function checkWin() {
     const phraseChars = document.querySelectorAll('#phrase ul li');
     phraseChars.forEach(char => fullPhrase.push(char.textContent));
     let h1 = startScreen.querySelector('h1');
-    h1.innerHTML = `The phrase was: ${fullPhrase.join('')}`; 
+    h1.innerHTML = `The song was: ${fullPhrase.join('')}`; 
     clearGame();
     startScreen.className = 'lose';
     startScreen.style.display = "flex";
     title.textContent = "Bummer! How 'bout another round?";
   }
-
+}
 // Start play
 startButton.addEventListener('click', (e) => {
   addPhraseToDisplay(phrases);
