@@ -131,14 +131,15 @@ function checkWin() {
     if (show.length === letters.length) {
 
       // Wait for the animation to complete
+     
       setTimeout(function(){
-        // Display win overlay
-        overlay.style.display = 'flex';
-        overlay.classList.add('win');
-        overlay.appendChild(win);
-        title.textContent = "Victory is yours! Two out of three?";
-      }, 2000);
-        clearGame();
+      // Display win overlay
+      overlay.style.display = 'flex';
+      overlay.classList.add('win');
+      overlay.appendChild(win);
+      title.textContent = "Victory is yours! Two out of three?";
+    }, 2000);
+      clearGame();
       //  startScreen.className = 'win';
       //  startScreen.style.display = "flex";
    
