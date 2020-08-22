@@ -1,6 +1,13 @@
 const phrase = document.getElementById('phrase');
 const qwerty = document.getElementById('qwerty');
 
+//sound fx
+//const letterTurning = document.getElementById('letterTurning');
+
+//function preload() {
+//    letterTurning = loadSound('audio/cardTurning.mp3');
+//}
+
 let missed = 0;
 
 const ul = phrase.querySelector('ul');
@@ -90,6 +97,7 @@ function checkLetter(clicked, array) {
     if (clicked.textContent === array[i].textContent.toLowerCase()) {
       letter = array[i].textContent.toLowerCase();
       array[i].classList.add("show");
+//      letterTurning.play('letterTurning');
     }
     clicked.classList.add("chosen");
     clicked.setAttribute("disabled", true);
