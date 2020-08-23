@@ -1,5 +1,6 @@
 const phrase = document.getElementById('phrase');
 const qwerty = document.getElementById('qwerty');
+const rollSound = new Audio("../audio/cardTurning.mp3");
 
 //sound fx
 //const letterTurning = document.getElementById('letterTurning');
@@ -98,11 +99,13 @@ function checkLetter(clicked, array) {
       letter = array[i].textContent.toLowerCase();
       array[i].classList.add("show");
 //      letterTurning.play('letterTurning');
+        
     }
     clicked.classList.add("chosen");
     clicked.setAttribute("disabled", true);
   }
   return letter;
+    
 }
 
 // check keyboard input against letters in phrase
@@ -112,7 +115,6 @@ qwerty.addEventListener('click', (e) => {
     let clicked = e.target;
     let lis = ul.children;
     let letters = [];
-
     for (let i = 0; i < lis.length; i++) {
       if (lis[i].className === "letter") {
         letters.push(lis[i]);
