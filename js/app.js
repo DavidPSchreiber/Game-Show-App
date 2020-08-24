@@ -1,14 +1,5 @@
 const phrase = document.getElementById('phrase');
 const qwerty = document.getElementById('qwerty');
-const rollSound = new Audio("../audio/cardTurning.mp3");
-
-//sound fx
-//const letterTurning = document.getElementById('letterTurning');
-
-//function preload() {
-//    letterTurning = loadSound('audio/cardTurning.mp3');
-//}
-
 let missed = 0;
 
 const ul = phrase.querySelector('ul');
@@ -98,8 +89,7 @@ function checkLetter(clicked, array) {
     if (clicked.textContent === array[i].textContent.toLowerCase()) {
       letter = array[i].textContent.toLowerCase();
       array[i].classList.add("show");
-//      letterTurning.play('letterTurning');
-        
+
     }
     clicked.classList.add("chosen");
     clicked.setAttribute("disabled", true);
@@ -115,6 +105,7 @@ qwerty.addEventListener('click', (e) => {
     let clicked = e.target;
     let lis = ul.children;
     let letters = [];
+//      rollSound="cardTurning.play()";
     for (let i = 0; i < lis.length; i++) {
       if (lis[i].className === "letter") {
         letters.push(lis[i]);
@@ -128,6 +119,11 @@ qwerty.addEventListener('click', (e) => {
       let lives = ol.getElementsByTagName('img');
       lives[missed].setAttribute('src', 'images/lostHeart.png');
       missed++;
+    } else {
+        var myAudio = new Audio('file:///Users/davidschreiber/Desktop/Coding%20Projects/TechnicalDegree-Project-6/audio/cardTurning-1.mp3');
+        myAudio.playbackRate = 2.8;
+        myAudio.play();
+        
     }
   }
   checkWin(); 
